@@ -11,7 +11,8 @@ var (
 	wg sync.WaitGroup
 )
 
-func main() {
+// saramaProducer
+func saramaProducer() {
 	consumer, err := sarama.NewConsumer([]string{"localhost:9092"}, nil)
 	if err != nil {
 		panic(err)
@@ -37,5 +38,8 @@ func main() {
 		wg.Wait()
 		consumer.Close()
 	}
+}
 
+func main() {
+	saramaProducer()
 }
